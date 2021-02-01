@@ -21,7 +21,7 @@ const FirstPage = () => {
             <Row>
               <Col>
                 <h4>
-                  Sell Coins Finex... <a href="/sellNext1">Click here</a>
+                  Sell Coins Finex... <a href="/sellPageOne">Click here</a>
                 </h4>
               </Col>
             </Row>

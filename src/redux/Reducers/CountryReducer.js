@@ -3,7 +3,7 @@ import {
   ADD_WALLET_ADDRESS,
   ALL_Country,
   GET_COUNTRY_SELECTED,
-} from "../actions/types";
+} from "../Actions/types";
 
 const initialState = {
   counters: [],

@@ -1,18 +1,25 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
-const BuyNext4 = () => {
+const BuyNextFour = () => {
+  // create a new instance swap id unique
   const id = uuidv4();
-  const currency = useSelector((state) => state.country.buyUserDetails);
-  const history = useHistory()
 
+  // get user all select data with redux store
+  const currency = useSelector((state) => state.country.buyUserDetails);
+
+  // go select page link when needed users
+  const history = useHistory();
+
+  // get server api and post all data in mongoDb server when function postBuy click
+  // buyCoinDataWithMaterial
   const postBuy = () => {
     const buyData = { ...currency, SwapId: id };
     console.log(buyData);
-    fetch("http://localhost:5000/buy", {
+    fetch("https://finex-getway-server-api.herokuapp.com/buyCoinDataWithBootStrap", {
       method: "POST",
       body: JSON.stringify(buyData),
       headers: {
@@ -22,14 +29,17 @@ const BuyNext4 = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          alert("Successfully posted");
+          alert("Successfully Posted Data in MongoDB Server");
           history.push("/");
         }
+      })
+      .catch((error) => {
+        alert("not post server", error.message);
       });
   };
 
   return (
-    <div className="container border my-5">
+    <Container className="border my-5">
       <div className="container p-5">
         <h4 className="my-5">Transfers funds to the following account</h4>
         <div className="my-5">
@@ -50,8 +60,8 @@ const BuyNext4 = () => {
           </Button>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 
-export default BuyNext4;
+export default BuyNextFour;

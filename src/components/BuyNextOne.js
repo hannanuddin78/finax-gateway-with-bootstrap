@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Dropdown, SplitButton, Button } from "react-bootstrap";
+import { Dropdown, SplitButton, Button, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getAllCountries, getSelectedCountries } from "../actions/CountryAction";
+import { getAllCountries, getSelectedCountries } from "../redux/Actions/CountryAction";
 
-const BuyNext1 = () => {
+const BuyNextOne = () => {
   const [countryName, setCountryName] = useState({});
   const dispatch = useDispatch();
   const currency = useSelector((state) => state.country.counters);
@@ -30,7 +30,7 @@ const BuyNext1 = () => {
   };
 
   return (
-    <div className="container border my-5">
+    <Container className="border my-5">
       <div className="container p-5">
         <h3>Stable coin gateway - BUY</h3>
         <div className="my-5">
@@ -62,8 +62,8 @@ const BuyNext1 = () => {
           </Button>
         </Link>
       </div>
-    </div>
+    </Container>
   );
 };
 
-export default BuyNext1;
+export default BuyNextOne;
